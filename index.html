@@ -31,28 +31,285 @@
             overflow-x: hidden;
         }
 
-        /* Animated background elements */
-        .floating-shapes {
-            position: absolute;
+        /* Interactive Futuristic Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 25%, #e2e8f0 50%, #f1f5f9 75%, #ffffff 100%);
+            z-index: -10;
+        }
+
+        /* Animated Grid Background */
+        .cyber-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(rgba(0, 255, 168, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 168, 0.02) 1px, transparent 1px);
+            background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+            animation: gridMove 20s linear infinite;
+            z-index: -9;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100px, 100px); }
+        }
+
+        /* Floating Particles */
+        .particles-container {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: -1;
+            z-index: -8;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: linear-gradient(45deg, var(--neon-blue), var(--teal));
+            border-radius: 50%;
+            animation: floatUp 8s linear infinite;
+        }
+
+        .particle:nth-child(odd) {
+            background: linear-gradient(45deg, var(--teal), var(--orange));
+            animation-duration: 10s;
+        }
+
+        .particle:nth-child(3n) {
+            width: 6px;
+            height: 6px;
+            animation-duration: 12s;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Glowing Orbs */
+        .glow-orbs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -7;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(1px);
+            animation: orbFloat 15s ease-in-out infinite;
+        }
+
+        .orb1 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .orb2 {
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(0, 255, 168, 0.08) 0%, transparent 70%);
+            top: 60%;
+            right: 10%;
+            animation-delay: 5s;
+        }
+
+        .orb3 {
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.06) 0%, transparent 70%);
+            top: 30%;
+            right: 30%;
+            animation-delay: 10s;
+        }
+
+        @keyframes orbFloat {
+            0%, 100% { 
+                transform: translate(0, 0) scale(1);
+                opacity: 0.3;
+            }
+            25% { 
+                transform: translate(30px, -40px) scale(1.1);
+                opacity: 0.5;
+            }
+            50% { 
+                transform: translate(-20px, -60px) scale(0.9);
+                opacity: 0.4;
+            }
+            75% { 
+                transform: translate(40px, -30px) scale(1.05);
+                opacity: 0.6;
+            }
+        }
+
+        /* Circuit Lines */
+        .circuit-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -6;
+        }
+
+        .circuit-line {
+            position: absolute;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(0, 212, 255, 0.3) 20%, 
+                rgba(0, 212, 255, 0.6) 50%, 
+                rgba(0, 212, 255, 0.3) 80%, 
+                transparent 100%);
+            animation: pulseFlow 3s ease-in-out infinite;
+        }
+
+        .line1 {
+            width: 300px;
+            height: 2px;
+            top: 20%;
+            left: 0;
+            animation-delay: 0s;
+        }
+
+        .line2 {
+            width: 2px;
+            height: 200px;
+            top: 15%;
+            right: 20%;
+            background: linear-gradient(180deg, 
+                transparent 0%, 
+                rgba(0, 255, 168, 0.3) 20%, 
+                rgba(0, 255, 168, 0.6) 50%, 
+                rgba(0, 255, 168, 0.3) 80%, 
+                transparent 100%);
+            animation-delay: 1s;
+        }
+
+        .line3 {
+            width: 250px;
+            height: 2px;
+            bottom: 30%;
+            right: 0;
+            animation-delay: 2s;
+        }
+
+        @keyframes pulseFlow {
+            0%, 100% { 
+                opacity: 0.2;
+                transform: scaleX(0.8);
+            }
+            50% { 
+                opacity: 0.8;
+                transform: scaleX(1.2);
+            }
+        }
+
+        /* Data Stream Effect */
+        .data-stream {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -5;
+            font-family: 'Orbitron', monospace;
+            font-size: 12px;
+            color: rgba(0, 212, 255, 0.1);
+            overflow: hidden;
+        }
+
+        .stream-text {
+            position: absolute;
+            white-space: nowrap;
+            animation: streamFlow 10s linear infinite;
+        }
+
+        .stream1 {
+            top: 25%;
+            left: -100%;
+            animation-delay: 0s;
+        }
+
+        .stream2 {
+            top: 45%;
+            left: -100%;
+            animation-delay: 3s;
+        }
+
+        .stream3 {
+            top: 65%;
+            left: -100%;
+            animation-delay: 6s;
+        }
+
+        @keyframes streamFlow {
+            0% { left: -100%; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { left: 100%; opacity: 0; }
+        }
+
+        /* Enhanced existing floating shapes */
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -4;
         }
 
         .shape {
             position: absolute;
-            opacity: 0.1;
-            animation: float 6s ease-in-out infinite;
+            opacity: 0.08;
+            animation: float 8s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.3));
         }
 
         .shape:nth-child(1) {
             top: 10%;
             left: 10%;
-            width: 80px;
-            height: 80px;
+            width: 120px;
+            height: 120px;
             background: linear-gradient(45deg, var(--neon-blue), var(--teal));
             border-radius: 50%;
             animation-delay: 0s;
@@ -61,8 +318,8 @@
         .shape:nth-child(2) {
             top: 70%;
             right: 20%;
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             background: linear-gradient(45deg, var(--orange), var(--neon-blue));
             clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
             animation-delay: 2s;
@@ -78,9 +335,39 @@
             animation-delay: 4s;
         }
 
+        .shape:nth-child(4) {
+            top: 50%;
+            left: 5%;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--orange), var(--teal));
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+            animation-delay: 1s;
+        }
+
+        .shape:nth-child(5) {
+            bottom: 20%;
+            right: 40%;
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(45deg, var(--neon-blue), var(--orange));
+            border-radius: 20px;
+            animation-delay: 3s;
+        }
+
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg) scale(1);
+            }
+            25% { 
+                transform: translateY(-30px) rotate(90deg) scale(1.1);
+            }
+            50% { 
+                transform: translateY(-60px) rotate(180deg) scale(0.9);
+            }
+            75% { 
+                transform: translateY(-30px) rotate(270deg) scale(1.05);
+            }
         }
 
         /* Header Section */
@@ -805,8 +1092,37 @@
     </style>
 </head>
 <body>
-    <!-- Floating Background Shapes -->
+    <!-- Interactive Futuristic Background Elements -->
+    <div class="cyber-grid"></div>
+    
+    <!-- Floating Particles -->
+    <div class="particles-container" id="particles"></div>
+    
+    <!-- Glowing Orbs -->
+    <div class="glow-orbs">
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+        <div class="orb orb3"></div>
+    </div>
+    
+    <!-- Circuit Lines -->
+    <div class="circuit-lines">
+        <div class="circuit-line line1"></div>
+        <div class="circuit-line line2"></div>
+        <div class="circuit-line line3"></div>
+    </div>
+    
+    <!-- Data Stream -->
+    <div class="data-stream">
+        <div class="stream-text stream1">01001000 01100101 01101100 01101100 01101111 STEM 01010111 01101111 01110010 01101100 01100100</div>
+        <div class="stream-text stream2">ROBOTICS::AI::DRONES::INNOVATION 11001100 10101010 01010101</div>
+        <div class="stream-text stream3">DISHCHIIBIKOH_STEM_CLUB 01000110 01110101 01110100 01110101 01110010 01100101</div>
+    </div>
+
+    <!-- Enhanced Floating Background Shapes -->
     <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
         <div class="shape"></div>
         <div class="shape"></div>
         <div class="shape"></div>
@@ -1154,7 +1470,7 @@
         <div class="container">
             <div class="footer-content">
                 <!-- EDITABLE: Contact information -->
-                <p><strong>Contact Us:</strong> stem.club@dishchiibikoh.edu</p>
+                <p><strong>Contact Us:</strong> jestoni.agan@dishchiibikoh.org</p>
                 <div class="footer-links">
                     <!-- EDITABLE: Social media links -->
                     <a href="#"><i class="fab fa-instagram"></i></a>
@@ -1176,6 +1492,65 @@
     </div>
 
     <script>
+        // Create dynamic particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random positioning
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (Math.random() * 6 + 8) + 's';
+                
+                // Random size variation
+                const size = Math.random() * 4 + 2;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Interactive mouse movement effect
+        let mouseX = 0, mouseY = 0;
+        
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX / window.innerWidth;
+            mouseY = e.clientY / window.innerHeight;
+            
+            // Move orbs slightly based on mouse position
+            const orbs = document.querySelectorAll('.orb');
+            orbs.forEach((orb, index) => {
+                const speed = (index + 1) * 0.02;
+                const x = mouseX * 20 * speed;
+                const y = mouseY * 20 * speed;
+                orb.style.transform = `translate(${x}px, ${y}px)`;
+            });
+            
+            // Adjust circuit line intensity based on mouse proximity
+            const lines = document.querySelectorAll('.circuit-line');
+            lines.forEach(line => {
+                const rect = line.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                const distance = Math.sqrt(
+                    Math.pow(e.clientX - centerX, 2) + Math.pow(e.clientY - centerY, 2)
+                );
+                const maxDistance = 300;
+                const intensity = Math.max(0, 1 - distance / maxDistance);
+                line.style.opacity = 0.2 + intensity * 0.6;
+            });
+        });
+
+        // Initialize particles when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+        });
+
         // Gallery data for lightbox
         const galleryData = [
             {
